@@ -14,7 +14,7 @@ export default (args) => {
   }
 
   if (!renameOutfile) {
-    Array.prototype.slice.apply(parsed.args, [parsed.globIndex, 1].concat(files));
+    Array.prototype.splice.apply(parsed.args, [parsed.globIndex, 1].concat(files));
     browserify(parsed.cmd, parsed.args);
     return;
   }

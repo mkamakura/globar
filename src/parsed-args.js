@@ -56,11 +56,12 @@ export default class ParsedArgs {
   }
 
   parseSubArgs(args) {
-    const arg = args[0];
+    let arg = args[0];
 
     if (arg === '[') {
       while (arg !== ']') {
-        this.args.push(args.shift());
+        arg = args.shift();
+        this.args.push(arg);
       }
       return true;
     }
@@ -114,15 +115,15 @@ export default class ParsedArgs {
     }
 
     if (arg.indexOf(`${shortName}=`) === 0) {
-      parsedArg.prefix = shotName;
+      parsedArg.prefix = `${shortName}=`;
     }
     if (arg.indexOf(`${longName}=`) === 0) {
-      parsedArg.prefix = longName;
+      parsedArg.prefix = `${longName}=`;
     }
 
     if (parsedArg.prefix) {
       const value = args.shift();
-      parsedArg.value = value.substr(parseArg.prefix.length);
+      parsedArg.value = value.substr(parsedArg.prefix.length);
       return parsedArg;
     }
   }
