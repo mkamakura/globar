@@ -1,0 +1,51 @@
+{
+  "name": "globar",
+  "description": "Run browserify and watchify with globs",
+  "version": "1.0.0",
+  "author": "Masaya Kamakura <kamakura.masaya@gmail.com> (https://github.com/mkamakura)",
+  "bugs": {
+    "url": "https://github.com/mkamakura/globar/issues"
+  },
+  "dependencies": {
+    "browserify": "^13.0.1",
+    "glob": "^7.0.3",
+    "globby": "^4.1.0",
+    "watchify": "^3.7.0"
+  },
+  "devDependencies": {
+    "ava": "^0.15.1",
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^2.10.2",
+    "fixpack": "^2.3.1",
+    "npm-run-all": "^2.1.1",
+    "rimraf": "^2.5.2",
+    "touch": "^1.0.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/mkamakura/globar#readme",
+  "keywords": [
+    "browserify",
+    "cli",
+    "glob",
+    "watchify"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://mkamakura@github.com/mkamakura/globar.git"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib --source-maps inline",
+    "clean": "rimraf lib",
+    "fixpack": "fixpack",
+    "globar": "bin/globar \"tests/sample-project/src/**/*.js\" -o \"tests/sample-project/build/**/*.min.js\"",
+    "lint": "eslint src test",
+    "mkdir": "mkdir lib",
+    "test": "ava",
+    "watch": "babel src --out-dir lib --watch --source-maps"
+  }
+}
