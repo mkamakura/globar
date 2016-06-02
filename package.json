@@ -49,7 +49,7 @@
     "clean": "rimraf lib",
     "fixpack": "fixpack",
     "globar": "bin/globar \"tests/sample-project/lib/**/*.js\"",
-    "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
+    "test": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
     "lint": "eslint src test",
     "mkdir": "mkdir lib",
     "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
