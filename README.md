@@ -17,7 +17,7 @@ Options:
 
   <entry files glob>
 
-    Glob patter of entry files.
+    Glob pattern of entry files.
 
   --outfile=FILE, -o FILE
 
