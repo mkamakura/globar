@@ -1,106 +1,106 @@
 'use strict';
 
 var helper  = require('../fixtures/helper'),
-    globify = require('../../lib').default;
+    globar = require('../../lib').default;
 
 describe('one-to-one (pass-through)', function() {
   it('should call browserify without any args', function() {
-    globify();
+    globar();
     helper.assert('browserify', []);
   });
 
   it('should call browserify without any args (empty array)', function() {
-    globify([]);
+    globar([]);
     helper.assert('browserify', []);
   });
 
   it('should call watchify without any args', function() {
-    globify(['--watch']);
+    globar(['--watch']);
     helper.assert('watchify', []);
   });
 
   it('should call browserify --outfile=FILE', function() {
-    globify(['--outfile=dist/my-file.js']);
+    globar(['--outfile=dist/my-file.js']);
     helper.assert('browserify', ['--outfile=dist/my-file.js']);
   });
 
   it('should call browserify --outfile FILE', function() {
-    globify(['--outfile', 'dist/my-file.js']);
+    globar(['--outfile', 'dist/my-file.js']);
     helper.assert('browserify', ['--outfile', 'dist/my-file.js']);
   });
 
   it('should call browserify -o FILE', function() {
-    globify(['-o', 'dist/my-file.js']);
+    globar(['-o', 'dist/my-file.js']);
     helper.assert('browserify', ['-o', 'dist/my-file.js']);
   });
 
   it('should call watchify -o FILE', function() {
-    globify(['-o', 'dist/my-file.js', '-w']);
+    globar(['-o', 'dist/my-file.js', '-w']);
     helper.assert('watchify', ['-o', 'dist/my-file.js']);
   });
 
   it('should call browserify --outfile=FILESPEC', function() {
-    globify(['--outfile=dist/**/*.js']);
+    globar(['--outfile=dist/**/*.js']);
     helper.assert('browserify', ['--outfile=dist/**/*.js']);
   });
 
   it('should call browserify --outfile FILESPEC', function() {
-    globify(['--outfile', 'dist/**/*.js']);
+    globar(['--outfile', 'dist/**/*.js']);
     helper.assert('browserify', ['--outfile', 'dist/**/*.js']);
   });
 
   it('should call browserify -o FILESPEC', function() {
-    globify(['-o', 'dist/**/*.js']);
+    globar(['-o', 'dist/**/*.js']);
     helper.assert('browserify', ['-o', 'dist/**/*.js']);
   });
 
   it('should call watchify -o FILESPEC', function() {
-    globify(['-w', '-o', 'dist/**/*.js']);
+    globar(['-w', '-o', 'dist/**/*.js']);
     helper.assert('watchify', ['-o', 'dist/**/*.js']);
   });
 
   it('should call browserify --outfile=DIR', function() {
-    globify(['--outfile=dist']);
+    globar(['--outfile=dist']);
     helper.assert('browserify', ['--outfile=dist']);
   });
 
   it('should call browserify --outfile DIR', function() {
-    globify(['--outfile', 'dist']);
+    globar(['--outfile', 'dist']);
     helper.assert('browserify', ['--outfile', 'dist']);
   });
 
   it('should call browserify -o DIR', function() {
-    globify(['-o', 'dist']);
+    globar(['-o', 'dist']);
     helper.assert('browserify', ['-o', 'dist']);
   });
 
   it('should call watchify -o DIR', function() {
-    globify(['-o', 'dist', '--watch']);
+    globar(['-o', 'dist', '--watch']);
     helper.assert('watchify', ['-o', 'dist']);
   });
 
   it('should call browserify INFILE --outfile=FILE', function() {
-    globify(['lib/index.js', '--outfile=dist/my-file.js']);
+    globar(['lib/index.js', '--outfile=dist/my-file.js']);
     helper.assert('browserify', ['lib/index.js', '--outfile=dist/my-file.js']);
   });
 
   it('should call browserify INFILE --outfile=FILESPEC', function() {
-    globify(['lib/index.js', '--outfile=dist/*.js']);
+    globar(['lib/index.js', '--outfile=dist/*.js']);
     helper.assert('browserify', ['lib/index.js', '--outfile=dist/*.js']);
   });
 
   it('should call browserify INFILE --outfile=DIR', function() {
-    globify(['lib/index.js', '--outfile=dist']);
+    globar(['lib/index.js', '--outfile=dist']);
     helper.assert('browserify', ['lib/index.js', '--outfile=dist']);
   });
 
   it('should call watchify INFILE --outfile=DIR', function() {
-    globify(['lib/index.js', '-w', '--outfile=dist']);
+    globar(['lib/index.js', '-w', '--outfile=dist']);
     helper.assert('watchify', ['lib/index.js', '--outfile=dist']);
   });
 
   it('should call browserify with lots of options', function() {
-    globify([
+    globar([
       '-g', 'uglifyify',
       '-t', '[', 'foo-bar', '--biz', '-baz', '--watch', 'hello, world', '*.html', ']',
       'lib/index.js', '-g', 'browserify-istanbul', '-u', '**/hello-*.js',
@@ -116,7 +116,7 @@ describe('one-to-one (pass-through)', function() {
   });
 
   it('should call watchify with lots of options', function() {
-    globify([
+    globar([
       '-g', 'uglifyify', '-w',
       '-t', '[', 'foo-bar', '--biz', '-baz', 'hello, world', '*.html', ']',
       'lib/index.js', '-g', 'browserify-istanbul', '--exclude=**/hello-*.js',

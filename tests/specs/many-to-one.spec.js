@@ -1,21 +1,21 @@
 'use strict';
 
 var helper  = require('../fixtures/helper'),
-    globify = require('../../lib').default;
+    globar = require('../../lib').default;
 
 describe('many-to-one', function() {
   it('should call browserify with files matching glob pattern', function() {
-    globify(['lib/**/*.js']);
+    globar(['lib/**/*.js']);
     helper.assert('browserify', ['lib/hello-world.js', 'lib/index.js', 'lib/say/index.js']);
   });
 
   it('should call watchify with files matching glob pattern', function() {
-    globify(['lib/**/*.js', '-w']);
+    globar(['lib/**/*.js', '-w']);
     helper.assert('watchify', ['lib/hello-world.js', 'lib/index.js', 'lib/say/index.js']);
   });
 
   it('should call browserify GLOB --outfile=FILE', function() {
-    globify(['lib/**/*.js', '--outfile=dist/my-file.js']);
+    globar(['lib/**/*.js', '--outfile=dist/my-file.js']);
     helper.assert(
       'browserify',
       ['lib/hello-world.js', 'lib/index.js', 'lib/say/index.js', '--outfile=dist/my-file.js']
@@ -23,22 +23,22 @@ describe('many-to-one', function() {
   });
 
   it('should call watchify GLOB -o FILE', function() {
-    globify(['lib/**/*.js', '-o', 'dist/my-file.js', '-w']);
+    globar(['lib/**/*.js', '-o', 'dist/my-file.js', '-w']);
     helper.assert('watchify', ['lib/hello-world.js', 'lib/index.js', 'lib/say/index.js', '-o', 'dist/my-file.js']);
   });
 
   it('should call browserify GLOB -u GLOB', function() {
-    globify(['lib/**/*.js', '-u', '**/hello-*.js']);
+    globar(['lib/**/*.js', '-u', '**/hello-*.js']);
     helper.assert('browserify', ['lib/index.js', 'lib/say/index.js', '-u', '**/hello-*.js']);
   });
 
   it('should call browserify GLOB --exclude=GLOB', function() {
-    globify(['lib/**/*.js', '--exclude=**/hello-*.js', '-w']);
+    globar(['lib/**/*.js', '--exclude=**/hello-*.js', '-w']);
     helper.assert('watchify', ['lib/index.js', 'lib/say/index.js', '--exclude=**/hello-*.js']);
   });
 
   it('should call browserify with lots of options', function() {
-    globify([
+    globar([
       '-g', 'uglifyify',
       '-t', '[', 'foo-bar', '--biz', '-baz', '--watch', 'hello, world', '*.html', ']',
       'lib/**/*.js', '-g', 'browserify-istanbul',  '-u=**/hello-*.js',
@@ -54,7 +54,7 @@ describe('many-to-one', function() {
   });
 
   it('should call watchify with lots of options', function() {
-    globify([
+    globar([
       '-g', 'uglifyify', '-w',
       '-t', '[', 'foo-bar', '--biz', '-baz', 'hello, world', '*.html', ']',
       'lib/**/*.js', '-g', 'browserify-istanbul', '--exclude', '**/hello-*.js',
