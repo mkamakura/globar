@@ -1,4 +1,4 @@
-# Globar
+Globar
 ===
 
 Run browserify and watchify with globs.
