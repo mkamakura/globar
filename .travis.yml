@@ -12,3 +12,5 @@ matrix:
     only:
       - master
       - /^PR /
+before_script:
+  - "npm build"
