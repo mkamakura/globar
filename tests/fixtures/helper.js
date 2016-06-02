@@ -44,4 +44,3 @@ function assert(cmd, args) {
     expect(exec.args[1]).to.deep.equal(args);
   });
 }
-
