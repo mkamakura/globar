@@ -13,7 +13,7 @@ describe('cli', function() {
   });
 
   it('should return successful code for globar then return zero', function(done) {
-    var ps = childProcess.exec('../../bin/globar \"lib/**/*.js\" -o \"dist/**/*.bundle.min.js\"');
+    var ps = childProcess.exec('../../bin/globar \"src/**/*.js\" -o \"dist/**/*.bundle.min.js\"');
     ps.on('exit', function(code) {
       assert.isOk(code === 0);
       done();

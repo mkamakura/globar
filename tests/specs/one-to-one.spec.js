@@ -80,37 +80,37 @@ describe('one-to-one (pass-through)', function() {
   });
 
   it('should call browserify INFILE --outfile=FILE', function() {
-    globar(['lib/index.js', '--outfile=dist/my-file.js']);
-    helper.assert('browserify', ['lib/index.js', '--outfile=dist/my-file.js']);
+    globar(['src/index.js', '--outfile=dist/my-file.js']);
+    helper.assert('browserify', ['src/index.js', '--outfile=dist/my-file.js']);
   });
 
   it('should call browserify INFILE --outfile=FILESPEC', function() {
-    globar(['lib/index.js', '--outfile=dist/*.js']);
-    helper.assert('browserify', ['lib/index.js', '--outfile=dist/*.js']);
+    globar(['src/index.js', '--outfile=dist/*.js']);
+    helper.assert('browserify', ['src/index.js', '--outfile=dist/*.js']);
   });
 
   it('should call browserify INFILE --outfile=DIR', function() {
-    globar(['lib/index.js', '--outfile=dist']);
-    helper.assert('browserify', ['lib/index.js', '--outfile=dist']);
+    globar(['src/index.js', '--outfile=dist']);
+    helper.assert('browserify', ['src/index.js', '--outfile=dist']);
   });
 
   it('should call watchify INFILE --outfile=DIR', function() {
-    globar(['lib/index.js', '-w', '--outfile=dist']);
-    helper.assert('watchify', ['lib/index.js', '--outfile=dist']);
+    globar(['src/index.js', '-w', '--outfile=dist']);
+    helper.assert('watchify', ['src/index.js', '--outfile=dist']);
   });
 
   it('should call browserify with lots of options', function() {
     globar([
       '-g', 'uglifyify',
       '-t', '[', 'foo-bar', '--biz', '-baz', '--watch', 'hello, world', '*.html', ']',
-      'lib/index.js', '-g', 'browserify-istanbul', '-u', '**/hello-*.js',
+      'src/index.js', '-g', 'browserify-istanbul', '-u', '**/hello-*.js',
       '--outfile', 'dist/'
     ]);
 
     helper.assert('browserify', [
       '-g', 'uglifyify',
       '-t', '[', 'foo-bar', '--biz', '-baz', '--watch', 'hello, world', '*.html', ']',
-      'lib/index.js', '-g', 'browserify-istanbul', '-u', '**/hello-*.js',
+      'src/index.js', '-g', 'browserify-istanbul', '-u', '**/hello-*.js',
       '--outfile', 'dist/'
     ]);
   });
@@ -119,14 +119,14 @@ describe('one-to-one (pass-through)', function() {
     globar([
       '-g', 'uglifyify', '-w',
       '-t', '[', 'foo-bar', '--biz', '-baz', 'hello, world', '*.html', ']',
-      'lib/index.js', '-g', 'browserify-istanbul', '--exclude=**/hello-*.js',
+      'src/index.js', '-g', 'browserify-istanbul', '--exclude=**/hello-*.js',
       '--outfile', 'dist/'
     ]);
 
     helper.assert('watchify', [
       '-g', 'uglifyify',
       '-t', '[', 'foo-bar', '--biz', '-baz', 'hello, world', '*.html', ']',
-      'lib/index.js', '-g', 'browserify-istanbul', '--exclude=**/hello-*.js',
+      'src/index.js', '-g', 'browserify-istanbul', '--exclude=**/hello-*.js',
       '--outfile', 'dist/'
     ]);
   });
