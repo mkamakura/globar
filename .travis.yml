@@ -13,4 +13,4 @@ matrix:
       - master
       - /^PR /
 before_script:
-  - "npm build"
+  - "npm run build"
