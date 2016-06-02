@@ -1,7 +1,7 @@
 {
   "name": "globar",
   "description": "Run browserify and watchify with globs",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "author": "Masaya Kamakura <kamakura.masaya@gmail.com> (https://github.com/mkamakura)",
   "bugs": {
     "url": "https://github.com/mkamakura/globar/issues"
@@ -38,6 +38,7 @@
   ],
   "license": "MIT",
   "main": "bin/globar",
+  "bin": "bin/globar",
   "repository": {
     "type": "git",
     "url": "git+https://mkamakura@github.com/mkamakura/globar.git"
