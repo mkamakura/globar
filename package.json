@@ -1,7 +1,7 @@
 {
   "name": "globar",
   "description": "Run browserify and watchify with globs",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "author": "Masaya Kamakura <kamakura.masaya@gmail.com> (https://github.com/mkamakura)",
   "bin": "bin/globar",
   "bugs": {
@@ -19,7 +19,6 @@
     "babel-cli": "^6.9.0",
     "babel-eslint": "^6.0.4",
     "babel-preset-es2015": "^6.9.0",
-    "bump": "^0.2.5",
     "chai": "^3.5.0",
     "eslint": "^2.11.1",
     "eslint-plugin-babel": "^3.2.0",
@@ -28,7 +27,8 @@
     "mocha": "^2.5.3",
     "npm-run-all": "^2.1.1",
     "rimraf": "^2.5.2",
-    "sinon": "^1.17.4"
+    "sinon": "^1.17.4",
+    "version-bump-prompt": "^1.5.2"
   },
   "files": [
     "lib",
@@ -57,6 +57,7 @@
     "lint": "eslint src test",
     "mkdir": "mkdir lib",
     "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
+    "publish": "npm publish",
     "release": "npm-run-all fixpack clean build test bump publish",
     "test": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
     "watch": "babel src --out-dir lib --watch --source-maps"
