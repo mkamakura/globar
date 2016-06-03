@@ -2,6 +2,7 @@ Globar
 ===
 
 Run browserify and watchify with globs.
+A process exit code is browserify(or watchify) exit code.
 
 ## Install
 With npm do:
