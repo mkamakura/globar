@@ -5,6 +5,8 @@ Run browserify and watchify with globs.
 
 A process exit code is browserify(or watchify) exit code.
 
+[![npm version](https://badge.fury.io/js/globar.svg)](https://badge.fury.io/js/globar)
+
 ## Install
 With npm do:
 ```
