@@ -53,6 +53,7 @@ export default class ParsedArgs {
       this.cmd = 'watchify';
       return true;
     }
+    return false;
   }
 
   parseSubArgs(args) {
@@ -65,6 +66,7 @@ export default class ParsedArgs {
       }
       return true;
     }
+    return false;
   }
 
   parseDashArgs(args) {
@@ -74,6 +76,7 @@ export default class ParsedArgs {
       this.args.push(args.shift());
       return true;
     }
+    return false;
   }
 
   parseGlobs(args) {
@@ -126,5 +129,6 @@ export default class ParsedArgs {
       parsedArg.value = value.substr(parsedArg.prefix.length);
       return parsedArg;
     }
+    return false;
   }
 }

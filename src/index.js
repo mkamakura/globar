@@ -1,6 +1,16 @@
 import childProcess from 'child_process';
 import ParsedArgs from './parsed-args';
 
+function exitError(code) {
+  process.exit(code);
+}
+
+function browserify(cmd, args) {
+  console.log(cmd, args.join(' '));
+  const process = childProcess.fork(require.resolve(`${cmd}/bin/cmd`), args.slice());
+  process.on('exit', (code) => code !== 0 ? exitError(code) : undefined);
+}
+
 export default (args) => {
   const parsed = new ParsedArgs(args);
   const expandGlob = parsed.args[parsed.globIndex];
@@ -25,14 +35,4 @@ export default (args) => {
     fileArgs[parsed.outfileIndex] = renameOutfile(file, parsed.baseDir);
     browserify(parsed.cmd, fileArgs);
   });
-}
-
-function browserify(cmd, args) {
-  console.log(cmd, args.join(' '));
-  const process = childProcess.fork(require.resolve(`${cmd}/bin/cmd`), args.slice());
-  process.on('exit', (code) => code !== 0 ? exitError(code) : undefined);
-}
-
-function exitError(code) {
-  process.exit(code);
-}
+};
