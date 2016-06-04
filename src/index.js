@@ -7,7 +7,7 @@ function exitError(code) {
 
 function browserify(cmd, args) {
   console.log(cmd, args.join(' '));
-  const process = childProcess.fork(require.resolve(`${cmd}/bin/cmd`), args.slice());
+  const process = childProcess.swpan(require.resolve(`${cmd}/bin/cmd`), args.slice());
   process.on('exit', (code) => code !== 0 ? exitError(code) : undefined);
 }
 
