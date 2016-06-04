@@ -1,7 +1,7 @@
 Globar
 ===
 
-Run browserify and watchify with globs.
+Run [browserify](https://github.com/substack/node-browserify) and [watchify](https://github.com/substack/watchify)with globs.
 
 A process exit code is browserify(or watchify) exit code.
 
