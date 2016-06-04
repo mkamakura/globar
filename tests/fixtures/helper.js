@@ -1,6 +1,6 @@
 'use strict';
 
-var expect       = require('chai').expect,
+var assert       = require('power-assert'),
     sinon        = require('sinon'),
     path         = require('path'),
     childProcess = require('child_process');
@@ -14,12 +14,10 @@ process.chdir(path.join(__dirname, '../', 'sample-project'));
 
 beforeEach(function() {
   sinon.spy(console, 'log');
-  sinon.spy(childProcess, 'fork');
 });
 
 afterEach(function() {
   console.log.restore();
-  childProcess.fork.restore();
 });
 
 /**
@@ -30,17 +28,11 @@ function assert(cmd, args) {
 
   // Make sure each stub was called the correct number of times
   sinon.assert.callCount(console.log, args.length);
-  sinon.assert.callCount(childProcess.fork, args.length);
 
   args.forEach(function(args, index) {
     var log = console.log.getCall(index);
-    expect(log.args).to.have.lengthOf(2);
-    expect(log.args[0]).to.equal(cmd);
-    expect(log.args[1]).to.equal(args.join(' '));
-
-    var exec = childProcess.fork.getCall(index);
-    expect(exec.args).to.have.lengthOf(2);
-    expect(exec.args[0]).to.equal(require.resolve(cmd + '/bin/cmd'));
-    expect(exec.args[1]).to.deep.equal(args);
+    assert.ok(log.args.length === 2);
+    assert.ok(log.args[0] === cmd);
+    assert.ok(log.args[1] === args.join(' '));
   });
 }
