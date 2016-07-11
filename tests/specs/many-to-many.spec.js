@@ -25,6 +25,16 @@ describe('many-to-many', function() {
     );
   });
 
+  it('should call browserify-incremental GLOB -o FILESPEC', function() {
+    globar(['src/**/*.js', '-inc', '-o', 'dist/*.js']);
+    helper.assert(
+      'browserify-incremental',
+      ['src/hello-world.js', '-o', path.normalize('dist/hello-world.js')],
+      ['src/index.js', '-o', path.normalize('dist/index.js')],
+      ['src/say/index.js', '-o', path.normalize('dist/say/index.js')]
+    );
+  });
+
   it('should call watchify GLOB GLOB -o FILESPEC', function() {
     globar(['src/**/index.js', 'src/**/hello-*.js', '-w', '-o', 'dist/*.js']);
     helper.assert(

@@ -53,6 +53,11 @@ export default class ParsedArgs {
       this.cmd = 'watchify';
       return true;
     }
+    if (arg === '-inc' || arg === '--incremental') {
+      args.shift();
+      this.cmd = 'browserify-incremental';
+      return true;
+    }
     return false;
   }
 
