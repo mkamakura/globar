@@ -1,7 +1,7 @@
 {
   "name": "globar",
   "description": "Run browserify and watchify with globs",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "author": "Masaya Kamakura <kamakura.masaya@gmail.com> (https://github.com/mkamakura)",
   "bin": "bin/globar",
   "bugs": {
@@ -26,7 +26,7 @@
     "intelli-espower-loader": "^1.0.1",
     "istanbul": "^0.4.3",
     "mocha": "^2.5.3",
-    "npm-run-all": "^2.1.1",
+    "npm-run-all": "^2.3.0",
     "power-assert": "^1.4.1",
     "rimraf": "^2.5.2",
     "sinon": "^1.17.4",
@@ -58,7 +58,7 @@
     "globar": "bin/globar \"tests/sample-project/lib/**/*.js\"",
     "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
     "lint": "eslint src test",
-    "release": "npm-run-all fixpack clean build eslint test bump publish",
+    "release": "npm-run-all fixpack clean build eslint test bump",
     "test": "mocha --require intelli-espower-loader --bail --recursive tests/fixtures tests/specs",
     "watch": "babel src --out-dir lib --watch --source-maps"
   }
