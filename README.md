@@ -1,9 +1,9 @@
 Globar
 ===
 
-Run [browserify](https://github.com/substack/node-browserify) and [watchify](https://github.com/substack/watchify) with globs.
+Run [browserify](https://github.com/substack/node-browserify) and [watchify](https://github.com/substack/watchify) and [browserify-incremental](https://github.com/jsdf/browserify-incremental) with globs.
 
-A process exit code is browserify(or watchify) exit code.
+A process exit code is browserify(or watchify, browserify-incremental) exit code.
 
 [![npm version](https://badge.fury.io/js/globar.svg)](https://badge.fury.io/js/globar)
 
@@ -30,6 +30,10 @@ Options:
   --watch, -w
 
     Call watchify instead of browserify.
+  
+  --incremental, -inc
+  
+    call browserify-incremental instead of browserify.
 ```
 
 ## Contribution
