@@ -37,6 +37,7 @@ export const rename = (prefix, pattern, file, baseDir) => {
   const outputDir = path.join(patternDir, relativeDir);
   const outputPath = path.join(outputDir, fileBaseName + fileExtName);
 
-  mkdirp(outputDir, () => touch(outputPath));
+  mkdirp.sync(outputDir);
+  touch.sync(outputPath);
   return prefix + outputPath;
 };
