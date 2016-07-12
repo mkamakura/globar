@@ -1,14 +1,16 @@
-import childProcess from 'child_process';
+import execa from 'execa';
 import ParsedArgs from './parsed-args';
 
-function exitError(code) {
+function exitError({code, stderr}) {
+  process.stderr.write(stderr);
   process.exit(code);
 }
 
 function browserify(cmd, args) {
   console.log(cmd, args.join(' '));
-  const process = childProcess.fork(require.resolve(`${cmd}/bin/cmd`), args.slice());
-  process.on('exit', (code) => code !== 0 ? exitError(code) : undefined);
+  execa(require.resolve(`${cmd}/bin/cmd`), args.slice())
+    .then(({stdout}) => process.stdout.write(stdout))
+    .catch(exitError);
 }
 
 export default (args) => {
@@ -19,14 +21,12 @@ export default (args) => {
 
   if (!expandGlob) {
     if (renameOutfile) parsed.args[parsed.outfileIndex] = renameOutfile();
-    browserify(parsed.cmd, parsed.args);
-    return;
+    return browserify(parsed.cmd, parsed.args);
   }
 
   if (!renameOutfile) {
     Array.prototype.splice.apply(parsed.args, [parsed.globIndex, 1].concat(files));
-    browserify(parsed.cmd, parsed.args);
-    return;
+    return browserify(parsed.cmd, parsed.args);
   }
 
   files.forEach((file) => {

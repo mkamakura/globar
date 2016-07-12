@@ -10,7 +10,7 @@ A process exit code is browserify(or watchify, browserify-incremental) exit code
 ## Install
 With npm do:
 ```
-npm install -g globar
+npm install -g globar browserify watchify browserify-incremental
 ```
 
 ## Usage

@@ -1,6 +1,5 @@
 import path from 'path';
 import mkdirp from 'mkdirp';
-import touch from 'touch';
 
 export const getBaseDir = (pattern) => {
   const wildcard = pattern.indexOf('*');
@@ -10,11 +9,8 @@ export const getBaseDir = (pattern) => {
 
 export const isDirectory = (pattern) => {
   const basename = path.basename(pattern);
-  if (basename.indexOf('*') >= 0) {
-    return true;
-  } else if (basename.indexOf('.') === -1) {
-    return true;
-  }
+  if (basename.indexOf('*') >= 0) return true;
+  if (basename.indexOf('.') === -1) return true;
   return false;
 };
 
@@ -38,6 +34,5 @@ export const rename = (prefix, pattern, file, baseDir) => {
   const outputPath = path.join(outputDir, fileBaseName + fileExtName);
 
   mkdirp.sync(outputDir);
-  touch.sync(outputPath);
   return prefix + outputPath;
 };
