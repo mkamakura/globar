@@ -33,10 +33,11 @@ Options:
   
   --incremental, -inc
   
-    call browserify-incremental instead of browserify.
+    Call browserify-incremental instead of browserify.
+    
   --max-proc, -m
   
-    set maximum number processes.
+    Set maximum number of processes.
 ```
 
 ## Contribution
