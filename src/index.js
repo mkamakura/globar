@@ -29,6 +29,6 @@ export default (args) => {
     process.exit(1);
   }
 
-  if(parsed.maxProcs === Infinity) return fileArgs.forEach((args) => spawnProccess(parsed.cmd, args));
+  if(parsed.cmd === 'watchify' || parsed.maxProcs === Infinity) return fileArgs.forEach((args) => spawnProccess(parsed.cmd, args));
   queueingExec(parsed.cmd, fileArgs, parsed.maxProcs);
 };

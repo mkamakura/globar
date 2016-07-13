@@ -17,7 +17,7 @@ export function exitSafe({stdout}) {
 }
 
 export function spawnProccess(cmd, args) {
-  if(cmd === 'browserify') return simpleExec(cmd, args).then(exitSafe).catch(exitError);
+  if(cmd !== 'watchify') return simpleExec(cmd, args).then(exitSafe).catch(exitError);
   return simpleSpawn(cmd, args);
 }
 
