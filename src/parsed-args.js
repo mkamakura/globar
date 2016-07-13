@@ -7,6 +7,7 @@ export default class ParsedArgs {
     this.cmd = 'browserify';
     this.baseDir = '';
     this.globOptions = {ignore: []};
+    this.maxProcs = Infinity;
     this.globIndex = -1;
     this.outfileIndex = -1;
     this.args = [];
@@ -16,11 +17,13 @@ export default class ParsedArgs {
       this.parseOutfile(args) ||
       this.parseExclude(args) ||
       this.parseWatch(args) ||
+      this.parseMaxProccess(args) ||
       this.parseSubArgs(args) ||
       this.parseDashArgs(args) ||
       this.parseGlobs(args) ||
       this.passThrough(args);
     }
+    if(this.args.length === 0) this.args.push('-h');
   }
 
   parseOutfile(args) {
@@ -59,6 +62,16 @@ export default class ParsedArgs {
       return true;
     }
     return false;
+  }
+
+  parseMaxProccess(args) {
+    const arg = this.parseNameValueArg(args, '-m', '--max-proc');
+    this.args = this.args.filter(arg => arg !== '-m' && arg !== '--max-proc');
+    if(!arg) return false;
+    const maxProcs = +arg.value;
+    if(!maxProcs) return true;
+    this.maxProcs = maxProcs;
+    return true;
   }
 
   parseSubArgs(args) {
