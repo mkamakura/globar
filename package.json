@@ -27,6 +27,7 @@
     "intelli-espower-loader": "^1.0.1",
     "istanbul": "^0.4.3",
     "mocha": "^2.5.3",
+    "npm-check": "^5.2.2",
     "npm-run-all": "^2.3.0",
     "power-assert": "^1.4.1",
     "rimraf": "^2.5.2",
@@ -41,10 +42,10 @@
   "homepage": "https://github.com/mkamakura/globar#readme",
   "keywords": [
     "browserify",
+    "browserify-incremental",
     "cli",
     "glob",
-    "watchify",
-    "browserify-incremental"
+    "watchify"
   ],
   "license": "MIT",
   "main": "bin/globar",
@@ -60,6 +61,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps inline",
     "bump": "bump --prompt --tag --push --all",
+    "check": "npm-check",
     "clean": "rimraf lib",
     "eslint": "eslint src ",
     "fixpack": "fixpack",
