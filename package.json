@@ -43,7 +43,8 @@
     "browserify",
     "cli",
     "glob",
-    "watchify"
+    "watchify",
+    "browserify-incremental"
   ],
   "license": "MIT",
   "main": "bin/globar",
