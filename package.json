@@ -41,10 +41,10 @@
   "homepage": "https://github.com/mkamakura/globar#readme",
   "keywords": [
     "browserify",
+    "browserify-incremental",
     "cli",
     "glob",
-    "watchify",
-    "browserify-incremental"
+    "watchify"
   ],
   "license": "MIT",
   "main": "bin/globar",
@@ -61,11 +61,11 @@
     "build": "babel src --out-dir lib --source-maps inline",
     "bump": "bump --prompt --tag --push --all",
     "clean": "rimraf lib",
+    "coverage": "npm-run-all build coverage:istanbul",
+    "coverage:istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
     "eslint": "eslint src ",
     "fixpack": "fixpack",
     "globar": "bin/globar \"tests/sample-project/src/**/index.js\" -o tests/sample-project/dist -inc -v",
-    "coverage": "npm-run-all build coverage:istanbul",
-    "coverage:istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
     "lint": "eslint src test",
     "release": "npm-run-all fixpack clean build test bump",
     "test": "npm-run-all build test:mocha",
