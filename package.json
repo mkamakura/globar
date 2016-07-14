@@ -64,7 +64,7 @@
     "eslint": "eslint src ",
     "fixpack": "fixpack",
     "globar": "bin/globar \"tests/sample-project/src/**/index.js\" -o tests/sample-project/dist -inc -v",
-    "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
+    "istanbul": "npm run build && istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
     "lint": "eslint src test",
     "release": "npm-run-all fixpack clean build test bump",
     "test": "npm-run-all build test:mocha",
