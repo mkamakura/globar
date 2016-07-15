@@ -16,11 +16,6 @@ export function exitSafe({stdout}) {
   process.stdout.write(stdout);
 }
 
-export function spawnProccess(cmd, args) {
-  if(cmd !== 'watchify') return simpleExec(cmd, args).then(exitSafe).catch(exitError);
-  return simpleSpawn(cmd, args);
-}
-
 export function simpleExec(cmd, args) {
   console.log(cmd, args.join(' '));
   return execa(require.resolve(`${cmd}/bin/cmd`), args.slice());
@@ -32,6 +27,11 @@ export function simpleSpawn(cmd, args) {
   proc.on('exit', (code) => {
     if(code !== 0) exitError(code);
   });
+}
+
+export function spawnProccess(cmd, args) {
+  if(cmd !== 'watchify') return simpleExec(cmd, args).then(exitSafe).catch(exitError);
+  return simpleSpawn(cmd, args);
 }
 
 export function queueingExec(cmd, list, max) {
