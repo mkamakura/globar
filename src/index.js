@@ -30,6 +30,5 @@ export default (args) => {
   }
 
   if(parsed.cmd === 'watchify' || parsed.maxProcs === Infinity) return fileArgs.forEach((args) => spawnProccess(parsed.cmd, args));
-  queueingExec(parsed.cmd, fileArgs, parsed.maxProcs);
-  return undefined;
+  return queueingExec(parsed.cmd, fileArgs, parsed.maxProcs);
 };
