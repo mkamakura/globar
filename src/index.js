@@ -1,4 +1,4 @@
-import {queueingExec, spawnProccess} from './spawner'
+import {queueingExec, spawnProccess} from './spawner';
 import ParsedArgs from './parsed-args';
 
 export default (args) => {
@@ -30,5 +30,5 @@ export default (args) => {
   }
 
   if(parsed.cmd === 'watchify' || parsed.maxProcs === Infinity) return fileArgs.forEach((args) => spawnProccess(parsed.cmd, args));
-  queueingExec(parsed.cmd, fileArgs, parsed.maxProcs);
+  return queueingExec(parsed.cmd, fileArgs, parsed.maxProcs);
 };
